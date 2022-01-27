@@ -1,59 +1,70 @@
-<script context="module" lang="ts">
-	export const prerender = true;
-</script>
-
 <script lang="ts">
-	import Counter from '$lib/Counter.svelte';
-</script>
+    import { onMount } from "svelte";
+    import { tags } from "../store";
 
-<svelte:head>
-	<title>Home</title>
-</svelte:head>
+    onMount(() => {
+        fetch(`https://api.github.com/repos/sveltejs/svelte/tags`)
+            .then(res => res.json())
+            .then(tags.set)
+    });
+
+    let searchValue: string = "";
+    let timer: NodeJS.Timer | null = null;
+
+    function debounce (event: KeyboardEvent) {
+        if (timer) {
+            clearTimeout(timer);
+        }
+
+        const key = event.key;
+        const value = (event.target as HTMLInputElement).value;
+
+        if (key === "Enter" && value) {
+            searchValue = value;
+        } else {
+            timer = setTimeout(() => {
+                searchValue = value;
+            }, 500);
+        }
+    }
+</script>
 
 <section>
-	<h1>
-		<div class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</div>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
-
-	<Counter />
+    <!-- {@debug $tags} -->
+    <input
+        type="text"
+        placeholder="Search a tag"
+        on:keyup={debounce}
+        bind:value={searchValue}
+    >
 </section>
 
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
-	}
+<style lang="scss">
 
-	h1 {
-		width: 100%;
-	}
+    section {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
 
-	.welcome {
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
+    input {
+        accent-color: var(--accent-color);
+        width: clamp(90vw, calc(100% / 1.618), 100%);
+        height: 3rem;
+        border-radius: 1.5rem;
+        border: solid 1px #bbb;
+        padding: 0 1rem;
+        font-size: 2rem;
+        color: #444;
 
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
+        background-color: #f5f5f5;
+        background-image: url("static/search.svg");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+
+        &:focus {
+            background-image: url("static/search-accent.svg");
+        }
+    }
 </style>
