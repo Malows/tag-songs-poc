@@ -1,28 +1,15 @@
-<div class="avatar">
-    <div class="avatar__img-container">
-        <!-- <img class="avatar__img" src="#" alt=""> -->
-    </div>
+<script>
+	export let src = "";
+	export let rounded = false;
+	export let alt = "";
+</script>
+
+<div class="w-16 h-16 flex justify-center items-center">
+	<img
+		class="w-12 h-12 rounded-full"
+		class:rounded-full={rounded}
+		class:bg-slate-400={!src || src === "#"}
+		{src}
+		{alt}
+	>
 </div>
-
-<style lang="scss">
-    .avatar {
-		width: 3em;
-		height: 3em;
-
-		&__img-container {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			border-radius: 50%;
-			width: 100%;
-			height: 100%;
-			background-color: #aaa;
-		}
-
-		// &__img {
-		// 	width: 100%;
-		// 	height: 100%;
-		// 	object-fit: contain;
-		// }
-	}
-</style>

@@ -1,53 +1,26 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import logo from './svelte-logo.svg';
 	import Avatar from './Avatar.svelte';
+import NavigationItem from './NavigationItem.svelte';
 </script>
 
-<header>
-	<div class="brand">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
-		</a>
-	</div>
+<header class="h-16 px-12 flex justify-between">
+	<Avatar src={logo} alt="SvelteKit" />
 
 	<nav>
 
 		<ul>
-			<li class:active={$page.url.pathname === '/'}>
-				<a sveltekit:prefetch href="/">Random</a>
-			</li>
+			<NavigationItem route="/">Random</NavigationItem>
 
-			<li class:active={$page.url.pathname === '/about'}>
-				<a sveltekit:prefetch href="/about">Etiquetas</a>
-			</li>
+			<NavigationItem route="/about">Etiquetas</NavigationItem>
 		</ul>
 
-		<Avatar />
+		<Avatar src="/profile-pic.png" rounded alt="profile picture" />
 	</nav>
 
 </header>
 
 <style lang="scss">
-	header {
-		display: flex;
-		justify-content: space-between;
-		padding-right: 3rem;
-		padding-left: 3rem;
-	}
-
-	.brand {
-		justify-self: flex-start;
-		width: 3em;
-		height: 3em;
-	}
-
-	.brand img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
-	}
-
 	nav {
 		display: flex;
 		justify-content: flex-end;
@@ -58,33 +31,16 @@
 		position: relative;
 		padding: 0;
 		margin: 0;
-		height: 3em;
+		height: 100%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		list-style: none;
-		background: var(--background);
-		background-size: contain;
+		// background: var(--background);
+		// background-size: contain;
 	}
 
-	li {
-		position: relative;
-		height: 100%;
-	}
-
-	li.active::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--accent-color);
-	}
-
-	nav a {
+	/* nav a {
 		display: flex;
 		height: 100%;
 		align-items: center;
@@ -100,5 +56,5 @@
 
 	a:hover {
 		color: var(--accent-color);
-	}
+	} */
 </style>

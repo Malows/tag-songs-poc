@@ -3,11 +3,11 @@
 	import "../app.scss";
 </script>
 
-<Header>
+<Header />
 
 <main>
-	<slot>
-</slot></main>
+	<slot></slot>
+</main>
 
 <footer>
 	<p>Made with love</p>
@@ -41,5 +41,3 @@
 		}
 	}
 </style>
-</Header>
-<slot></slot>
