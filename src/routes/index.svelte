@@ -1,9 +1,11 @@
 <script lang="ts">
+    import CreateTagBadge from "$lib/components/CreateTagBadge.svelte";
+    import TagBadge from "$lib/components/TagBadge.svelte";
     import { onMount } from "svelte";
     import { tags } from "../store";
 
     onMount(() => {
-        fetch(`https://api.github.com/repos/sveltejs/svelte/tags`)
+        fetch(`${import.meta.env.VITE_HOST}/api/v1/tags`)
             .then(res => res.json())
             .then(tags.set)
     });
@@ -30,13 +32,19 @@
 </script>
 
 <section>
-    <!-- {@debug $tags} -->
     <input
         type="text"
         placeholder="Search a tag"
         on:keyup={debounce}
         bind:value={searchValue}
     >
+
+    {#each $tags as tag}
+        <TagBadge {tag} />
+
+    {:else}
+        <CreateTagBadge />
+    {/each}
 </section>
 
 <style lang="scss">
