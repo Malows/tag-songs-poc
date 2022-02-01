@@ -1,18 +1,27 @@
 <script lang="ts">
+	import { page } from "$app/stores";
+	import { goto } from "$app/navigation";
+
 	import logo from './svelte-logo.svg';
 	import Avatar from './Avatar.svelte';
-import NavigationItem from './NavigationItem.svelte';
+	import NavigationItem from './NavigationItem.svelte';
+
+	function checkHome () {
+		if ($page.url.pathname != '/') {
+			goto('/');
+		}
+	}
 </script>
 
 <header class="h-16 px-12 flex justify-between">
-	<Avatar src={logo} alt="SvelteKit" />
+	<Avatar src={logo} alt="SvelteKit" on:click={checkHome} />
 
 	<nav>
 
 		<ul>
 			<NavigationItem route="/">Random</NavigationItem>
 
-			<NavigationItem route="/about">Etiquetas</NavigationItem>
+			<NavigationItem route="/tags">Etiquetas</NavigationItem>
 		</ul>
 
 		<Avatar src="/profile-pic.png" rounded alt="profile picture" />
