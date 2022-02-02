@@ -1,6 +1,6 @@
 import { derived, writable } from 'svelte/store';
 
-export const tags = writable([]);
+export const tags = writable([] as Tag[]);
 
 export const searchTagInput = writable('');
 
