@@ -12,4 +12,4 @@
 
 <TagBadgeBase on:click={click} outline={false}>
     {tag.name}
-</TagBadgeBase>>
+</TagBadgeBase>
