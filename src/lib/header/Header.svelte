@@ -7,9 +7,9 @@
 	import NavigationItem from './NavigationItem.svelte';
 
 	function checkHome () {
-		if ($page.url.pathname != '/') {
-			goto('/');
-		}
+	    if ($page.url.pathname != '/') {
+	        goto('/');
+	    }
 	}
 </script>
 

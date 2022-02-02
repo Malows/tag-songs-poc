@@ -8,7 +8,9 @@
     "preview": "svelte-kit preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-    "lint": "eslint --ignore-path .gitignore ."
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint:fix": "eslint --fix --ignore-path .gitignore .",
+    "format": "prettier --write '{public,src}/**/*.{css,scss,html,js,ts,svelte}'"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
@@ -18,10 +20,13 @@
     "@typescript-eslint/parser": "^5.10.1",
     "autoprefixer": "^10.4.2",
     "eslint": "^7.32.0",
-    "eslint-plugin-svelte3": "^3.2.1",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-svelte3": "^3.4.0",
     "postcss": "^8.4.5",
     "postcss-import": "^14.0.2",
     "postcss-load-config": "^3.1.1",
+    "prettier": "^2.5.1",
+    "prettier-plugin-svelte": "^2.6.0",
     "sass": "^1.46.0",
     "svelte": "^3.44.0",
     "svelte-check": "^2.2.6",

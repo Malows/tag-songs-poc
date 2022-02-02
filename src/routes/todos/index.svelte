@@ -4,21 +4,21 @@
 
 	// see https://kit.svelte.dev/docs#loading
 	export const load: Load = async ({ fetch }) => {
-		const res = await fetch('/todos.json');
+	    const res = await fetch('/todos.json');
 
-		if (res.ok) {
-			const todos = await res.json();
+	    if (res.ok) {
+	        const todos = await res.json();
 
-			return {
-				props: { todos }
-			};
-		}
+	        return {
+	            props: { todos }
+	        };
+	    }
 
-		const { message } = await res.json();
+	    const { message } = await res.json();
 
-		return {
-			error: new Error(message)
-		};
+	    return {
+	        error: new Error(message)
+	    };
 	};
 </script>
 
@@ -37,12 +37,12 @@
 	export let todos: Todo[];
 
 	async function patch(res: Response) {
-		const todo = await res.json();
+	    const todo = await res.json();
 
-		todos = todos.map((t) => {
-			if (t.uid === todo.uid) return todo;
-			return t;
-		});
+	    todos = todos.map((t) => {
+	        if (t.uid === todo.uid) return todo;
+	        return t;
+	    });
 	}
 </script>
 

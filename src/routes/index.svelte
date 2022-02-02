@@ -1,8 +1,10 @@
 <script lang="ts">
+    import { onMount } from "svelte";
+
+    import { tags, possibleTags, inputs } from "../stores";
+
     import CreateTagBadge from "$lib/components/CreateTagBadge.svelte";
     import TagBadge from "$lib/components/TagBadge.svelte";
-    import { onMount } from "svelte";
-    import { tags, possibleTags, inputs } from "../stores";
 
     onMount(() => {
         if ($tags.length === 0) {
@@ -13,14 +15,13 @@
     });
 </script>
 
-<section class="flex justify-center w-full h-full">
+<section class="flex justify-center w-full h-full mt-80">
     <input
         type="text"
         placeholder="Search a tag"
         class="main-input main-input--search"
         bind:value={$inputs.search}
         >
-        <!-- on:keyup={debounce} -->
 </section>
 
 <section class="mt-6 w-full px-16 inline-flex gap-6">

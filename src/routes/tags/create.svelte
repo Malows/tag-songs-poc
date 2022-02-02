@@ -12,7 +12,7 @@
     }
 </script>
 
-<section class="flex justify-center w-full h-full">
+<section class="flex justify-center w-full h-full mt-80">
     <input
         type="text"
         placeholder="Tag name"

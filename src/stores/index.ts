@@ -1,20 +1,20 @@
 import Fuse from "fuse.js";
-import { derived } from 'svelte/store';
+import { derived } from "svelte/store";
 
-import { tags } from './tags';
-import { inputs } from './inputs';
+import { tags } from "./tags";
+import { inputs } from "./inputs";
 
-export * from './tags';
-export * from './inputs';
+export * from "./tags";
+export * from "./inputs";
 
-const FUSE_OPTIONS = { keys: ['name'] };
+const FUSE_OPTIONS = { keys: ["name"] };
 
 export const possibleTags = derived([tags, inputs], ([$tags, $input]) => {
-  if ($input.search.length === 0) {
-    return $tags;
-  }
+    if ($input.search.length === 0) {
+        return $tags;
+    }
 
-  const matches = new Fuse($tags, FUSE_OPTIONS).search($input.search);
+    const matches = new Fuse($tags, FUSE_OPTIONS).search($input.search);
 
-  return matches.map(match => match.item);
+    return matches.map((match) => match.item);
 });

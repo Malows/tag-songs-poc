@@ -1,5 +1,5 @@
 <script lang="ts">
-    export let outline: Boolean;
+    export let outline: boolean;
 
     $: extraClasses = outline
         ? "border-solid border-orange-600 text-orange-600 hover:bg-orange-200"
