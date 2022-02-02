@@ -1,7 +1,7 @@
 <script>
     import { goto } from "$app/navigation";
 
-    import { inputs } from "../../store";
+    import { inputs } from "../../stores";
 
     import TagBadgeBase from "./TagBadgeBase.svelte";
 

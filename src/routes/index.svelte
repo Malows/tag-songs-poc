@@ -2,7 +2,7 @@
     import CreateTagBadge from "$lib/components/CreateTagBadge.svelte";
     import TagBadge from "$lib/components/TagBadge.svelte";
     import { onMount } from "svelte";
-    import { tags, possibleTags, inputs } from "../store";
+    import { tags, possibleTags, inputs } from "../stores";
 
     onMount(() => {
         if ($tags.length === 0) {
