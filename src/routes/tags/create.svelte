@@ -1,29 +1,14 @@
 <script lang="ts">
-    import { tags } from "../../store/index"
+    import { tags, inputs } from "../../store";
 
-    let value = "";
-
-    function handleSubmit () {
-        if (!value) {
+    async function handleSubmit () {
+        if (!$inputs.create) {
             return;
         }
 
-        fetch(`${import.meta.env.VITE_HOST}/api/v1/tags`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json", },
-            body: JSON.stringify({ name: value }),
-        })
-            .then((res) => {
-                if (res.ok && res.status === 200) {
-                    return res.json();
-                }
+        await tags.add($inputs.create)
 
-                console.error(res);
-                throw new Error("Bad response from server");
-            })
-            .then((res) => {
-                $tags = [...$tags, res as Tag];
-            });
+        $inputs.create = "";
     }
 </script>
 
@@ -33,7 +18,7 @@
         placeholder="Tag name"
         class="main-input"
         on:submit={handleSubmit}
-        bind:value={value}
+        bind:value={$inputs.create}
     >
 
     <button

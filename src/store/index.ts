@@ -1,13 +1,20 @@
-import { derived, writable } from 'svelte/store';
+import Fuse from "fuse.js";
+import { derived } from 'svelte/store';
 
-export const tags = writable([] as Tag[]);
+import { tags } from './tags';
+import { inputs } from './inputs';
 
-export const searchTagInput = writable('');
+export * from './tags';
+export * from './inputs';
 
-export const possibleTags = derived([tags, searchTagInput], ([$tags, $input]) => {
-  const tagSet = $tags
-    .filter(tag => tag.name.includes($input.toLocaleLowerCase()) /* filtering criteria */)
-    .sort((a, b) => a.name.localeCompare(b.name) /* sorting criteria */);
+const FUSE_OPTIONS = { keys: ['name'] };
 
-  return tagSet;
+export const possibleTags = derived([tags, inputs], ([$tags, $input]) => {
+  if ($input.search.length === 0) {
+    return $tags;
+  }
+
+  const matches = new Fuse($tags, FUSE_OPTIONS).search($input.search);
+
+  return matches.map(match => match.item);
 });
