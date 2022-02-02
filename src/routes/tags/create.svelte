@@ -1,16 +1,14 @@
 <script lang="ts">
-    import { tags } from "../../store";
-
-    let value = "";
+    import { tags, inputs } from "../../store";
 
     async function handleSubmit () {
-        if (!value) {
+        if (!$inputs.create) {
             return;
         }
 
-        await tags.add(value)
+        await tags.add($inputs.create)
 
-        value = "";
+        $inputs.create = "";
     }
 </script>
 
@@ -20,7 +18,7 @@
         placeholder="Tag name"
         class="main-input"
         on:submit={handleSubmit}
-        bind:value={value}
+        bind:value={$inputs.create}
     >
 
     <button

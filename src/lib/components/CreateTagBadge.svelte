@@ -1,10 +1,18 @@
 <script>
     import { goto } from "$app/navigation";
+
+    import { inputs }  from '../../store';
+
     import TagBadgeBase from "./TagBadgeBase.svelte";
+
+    function handleClick () {
+        inputs.transverse();
+        goto('/tags/create');
+    }
 </script>
 
 
-<TagBadgeBase on:click={() => goto('/tags/create')} outline={true}>
+<TagBadgeBase on:click={handleClick} outline={true}>
     New tag
     <span class="font-extrabold pl-4">+</span>
 </TagBadgeBase>

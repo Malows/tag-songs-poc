@@ -12,7 +12,7 @@ function createStore () {
         update,
         clearCreate: () => update((inputs) => ({ ...inputs, create: '' })),
         clearSearch: () => update((inputs) => ({ ...inputs, search: '' })),
-        transverse: () => update((inputs) => ({ ...inputs, create: inputs.search })),
+        transverse: () => update((inputs) => ({ search: '', create: inputs.search })),
     }
 }
 

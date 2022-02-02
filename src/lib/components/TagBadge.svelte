@@ -1,11 +1,14 @@
 <script>
     import { goto } from "$app/navigation";
+
+    import { inputs } from "../../store";
+
     import TagBadgeBase from "./TagBadgeBase.svelte";
 
     export let tag;
 
     function click () {
-        goto(`/tags/${tag.slug}`);
+        goto(`/tags/${tag.slug}`).finally(inputs.clearSearch);
     }
 </script>
 
