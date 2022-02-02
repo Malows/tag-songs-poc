@@ -1,29 +1,16 @@
 <script lang="ts">
-    import { tags } from "../../store/index"
+    import { tags } from "../../store";
 
     let value = "";
 
-    function handleSubmit () {
+    async function handleSubmit () {
         if (!value) {
             return;
         }
 
-        fetch(`${import.meta.env.VITE_HOST}/api/v1/tags`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json", },
-            body: JSON.stringify({ name: value }),
-        })
-            .then((res) => {
-                if (res.ok && res.status === 200) {
-                    return res.json();
-                }
+        await tags.add(value)
 
-                console.error(res);
-                throw new Error("Bad response from server");
-            })
-            .then((res) => {
-                $tags = [...$tags, res as Tag];
-            });
+        value = "";
     }
 </script>
 
