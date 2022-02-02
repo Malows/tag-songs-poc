@@ -31,48 +31,20 @@
     }
 </script>
 
-<section>
+<section class="flex justify-center w-full h-full">
     <input
         type="text"
         placeholder="Search a tag"
+        class="main-input main-input--search"
         on:keyup={debounce}
         bind:value={searchValue}
     >
-
-    {#each $tags as tag}
-        <TagBadge {tag} />
-
-    {:else}
-        <CreateTagBadge />
-    {/each}
 </section>
 
-<style lang="scss">
-
-    section {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-    }
-
-    input {
-        accent-color: var(--accent-color);
-        width: clamp(90vw, calc(100% / 1.618), 100%);
-        height: 3rem;
-        border-radius: 1.5rem;
-        border: solid 1px #bbb;
-        padding: 0 1rem;
-        font-size: 2rem;
-        color: #444;
-
-        background-color: #f5f5f5;
-        background-image: url("static/search.svg");
-        background-repeat: no-repeat;
-        background-position: right 1rem center;
-
-        &:focus {
-            background-image: url("static/search-accent.svg");
-        }
-    }
-</style>
+<section class="mt-6 w-full px-16 inline-flex gap-6">
+{#each $tags as tag}
+    <TagBadge {tag} />
+{:else}
+    <CreateTagBadge />
+{/each}
+</section>
