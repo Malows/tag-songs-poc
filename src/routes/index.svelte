@@ -1,9 +1,11 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    import { fly } from "svelte/transition";
+    import { flip } from "svelte/animate";
 
     import { tags, possibleTags, inputs } from "../stores";
 
-    import CreateTagBadge from "$lib/components/CreateTagBadge.svelte";
+    import CreateTagBadge from "$lib/components/badges/CreateTagBadge.svelte";
     import TagBadge from "$lib/components/TagBadge.svelte";
 
     onMount(() => {

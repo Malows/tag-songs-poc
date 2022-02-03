@@ -1,9 +1,9 @@
 <script>
     import { goto } from "$app/navigation";
 
-    import { inputs }  from '../../stores';
+    import { inputs }  from "../../../stores";
 
-    import TagBadgeBase from "./TagBadgeBase.svelte";
+    import TagBadgeBase from ".../TagBadgeBase.svelte";
 
     function handleClick () {
         inputs.transverse();
