@@ -18,6 +18,7 @@ module.exports = {
 		node: true
 	},
 	rules: {
-		"indent": ["error", 4]
+		"indent": ["error", 4],
+        "quotes": ["error", "double"],
 	}
 };
