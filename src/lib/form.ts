@@ -5,12 +5,16 @@ export function enhance(
     {
         pending,
         error,
-        result
+        result,
     }: {
-		pending?: (data: FormData, form: HTMLFormElement) => void;
-		error?: (res: Response | null, error: Error | null, form: HTMLFormElement) => void;
-		result: (res: Response, form: HTMLFormElement) => void;
-	}
+    pending?: (data: FormData, form: HTMLFormElement) => void;
+    error?: (
+      res: Response | null,
+      error: Error | null,
+      form: HTMLFormElement
+    ) => void;
+    result: (res: Response, form: HTMLFormElement) => void;
+  }
 ): { destroy: () => void } {
     let current_token: unknown;
 
@@ -27,9 +31,9 @@ export function enhance(
             const res = await fetch(form.action, {
                 method: form.method,
                 headers: {
-                    accept: 'application/json'
+                    accept: "application/json",
                 },
-                body
+                body,
             });
 
             if (token !== current_token) return;
@@ -41,7 +45,7 @@ export function enhance(
             } else {
                 console.error(await res.text());
             }
-        } catch (e: any) {
+        } catch (e: unknown) {
             if (error) {
                 error(null, e, form);
             } else {
@@ -50,11 +54,11 @@ export function enhance(
         }
     }
 
-    form.addEventListener('submit', handle_submit);
+    form.addEventListener("submit", handle_submit);
 
     return {
         destroy() {
-            form.removeEventListener('submit', handle_submit);
-        }
+            form.removeEventListener("submit", handle_submit);
+        },
     };
 }

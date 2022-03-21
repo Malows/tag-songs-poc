@@ -1,10 +1,10 @@
 <script context="module" lang="ts">
-	import { enhance } from '$lib/form';
-	import type { Load } from '@sveltejs/kit';
+	import { enhance } from "$lib/form";
+	import type { Load } from "@sveltejs/kit";
 
 	// see https://kit.svelte.dev/docs#loading
 	export const load: Load = async ({ fetch }) => {
-	    const res = await fetch('/todos.json');
+	    const res = await fetch("/todos.json");
 
 	    if (res.ok) {
 	        const todos = await res.json();
@@ -23,8 +23,8 @@
 </script>
 
 <script lang="ts">
-	import { scale } from 'svelte/transition';
-	import { flip } from 'svelte/animate';
+	import { scale } from "svelte/transition";
+	import { flip } from "svelte/animate";
 
 	type Todo = {
 		uid: string;
@@ -81,12 +81,12 @@
 				method="post"
 				use:enhance={{
 					pending: (data) => {
-						todo.done = !!data.get('done');
+						todo.done = !!data.get("done");
 					},
 					result: patch
 				}}
 			>
-				<input type="hidden" name="done" value={todo.done ? '' : 'true'} />
+				<input type="hidden" name="done" value={todo.done ? "" : "true"} />
 				<button class="toggle" aria-label="Mark todo as {todo.done ? 'not done' : 'done'}" />
 			</form>
 

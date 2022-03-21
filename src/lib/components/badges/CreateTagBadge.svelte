@@ -3,11 +3,11 @@
 
     import { inputs }  from "../../../stores";
 
-    import TagBadgeBase from ".../TagBadgeBase.svelte";
+    import TagBadgeBase from "./TagBadgeBase.svelte";
 
     function handleClick () {
         inputs.transverse();
-        goto('/tags/create');
+        goto("/tags/create");
     }
 </script>
 

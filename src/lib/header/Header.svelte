@@ -2,13 +2,13 @@
 	import { page } from "$app/stores";
 	import { goto } from "$app/navigation";
 
-	import logo from './svelte-logo.svg';
-	import Avatar from './Avatar.svelte';
-	import NavigationItem from './NavigationItem.svelte';
+	import logo from "./svelte-logo.svg";
+	import Avatar from "./Avatar.svelte";
+	import NavigationItem from "./NavigationItem.svelte";
 
 	function checkHome () {
-	    if ($page.url.pathname != '/') {
-	        goto('/');
+	    if ($page.url.pathname != "/") {
+	        goto("/");
 	    }
 	}
 </script>

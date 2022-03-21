@@ -1,5 +1,5 @@
 <script context="module">
-	import { browser, dev } from '$app/env';
+	import { browser, dev } from "$app/env";
 
 	// we don't need any JS on this page, though we'll load
 	// it in dev so that we get hot module replacement...
@@ -20,11 +20,11 @@
 	import { tags, possibleTags, inputs } from "../../stores";
 
 	import CreateTagBadge from "$lib/components/badges/CreateTagBadge.svelte";
-	import TagBadge from "$lib/components/TagBadge.svelte";
+	import TagBadge from "$lib/components/badges/TagBadge.svelte";
 
 	onMount(() => {
     if ($tags.length === 0) {
-        fetch(`${import.meta.env.VITE_HOST}/api/v1/tags`)
+        fetch(`${import.meta.env.VITE_HOST}/api/tags`)
             .then(res => res.json())
             .then(tags.set)
     }

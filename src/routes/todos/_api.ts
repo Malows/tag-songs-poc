@@ -1,5 +1,5 @@
-import type { EndpointOutput, RequestEvent } from '@sveltejs/kit';
-import type { Locals } from '$lib/types';
+import type { EndpointOutput, RequestEvent } from "@sveltejs/kit";
+import type { Locals } from "$lib/types";
 
 /*
 	This module is used by the /todos.json and /todos/[uid].json
@@ -12,7 +12,7 @@ import type { Locals } from '$lib/types';
 	guarantees are made. Don't use it to organise your life.)
 */
 
-const base = 'https://api.svelte.dev';
+const base = "https://api.svelte.dev";
 
 export async function api(
     event: RequestEvent<Locals>,
@@ -27,9 +27,9 @@ export async function api(
     const res = await fetch(`${base}/${resource}`, {
         method: event.request.method,
         headers: {
-            'content-type': 'application/json'
+            "content-type": "application/json",
         },
-        body: data && JSON.stringify(data)
+        body: data && JSON.stringify(data),
     });
 
     // if the request came from a <form> submission, the browser's default
@@ -38,19 +38,19 @@ export async function api(
     // /todos page, rather than showing the response
     if (
         res.ok &&
-		event.request.method !== 'GET' &&
-		event.request.headers.get('accept') !== 'application/json'
+    event.request.method !== "GET" &&
+    event.request.headers.get("accept") !== "application/json"
     ) {
         return {
             status: 303,
             headers: {
-                location: '/todos'
-            }
+                location: "/todos",
+            },
         };
     }
 
     return {
         status: res.status,
-        body: await res.json()
+        body: await res.json(),
     };
 }
