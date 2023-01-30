@@ -8,6 +8,7 @@
         : "bg-orange-600 text-white";
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <span
     class={`px-8 py-2 border-2 inline-block cursor-pointer text-base rounded-full uppercase tracking-widest ${extraClasses}`}
     on:click

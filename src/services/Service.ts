@@ -1,6 +1,8 @@
+import { PUBLIC_STORAGE_PREFIX } from '$env/static/public';
+
 class Service {
     protected getToken() {
-        const prefix = process.env.STORAGE_PREFIX ?? "";
+        const prefix = PUBLIC_STORAGE_PREFIX;
 
         return localStorage.getItem(`${prefix}_access_token`) || "";
     }

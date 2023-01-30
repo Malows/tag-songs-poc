@@ -1,4 +1,6 @@
-export const HOST = import.meta.env.VITE_HOST || "";
+import { PUBLIC_HOST } from '$env/static/public'
+
+export const HOST = PUBLIC_HOST;
 export const URL = `${HOST}/api`;
 export const ADMIN_URL = `${HOST}/api/admin`;
 

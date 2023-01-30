@@ -4,6 +4,7 @@
 	export let alt = "";
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="w-16 h-16 flex justify-center items-center" on:click >
 	<img
 		class="w-12 h-12 rounded-full"

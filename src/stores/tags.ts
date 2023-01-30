@@ -1,9 +1,9 @@
 import { writable } from "svelte/store";
 
-import services from "src/services";
+import services from "../services";
 
 function createStore() {
-    const { subscribe, set, update } = writable([]);
+    const { subscribe, set, update } = writable([] as Tag[]);
 
     const service = services.user.tags; // should pick some service from the profile
 
@@ -14,12 +14,12 @@ function createStore() {
         add: async (name: string) => {
             const response = await service.create({ name });
 
-            if (!response.isOk || response.code >= 400) {
+            if (!response.isOk || response?.code >= 400) {
                 console.error(response);
                 throw new Error("Bad response from server");
             }
 
-            update((tags) => [...tags, response.data]);
+            update((tags: Tag[]) => [...tags, response.data as Tag]);
         },
 
         fetch: async () => {
@@ -30,7 +30,7 @@ function createStore() {
                 throw new Error("Bad response from server");
             }
 
-            set(response.data);
+            set(response.data as Tag[]);
         }
     };
 }

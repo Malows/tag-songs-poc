@@ -29,7 +29,7 @@
 
 </header>
 
-<style lang="scss">
+<style>
 	nav {
 		display: flex;
 		justify-content: flex-end;
@@ -45,8 +45,8 @@
 		justify-content: center;
 		align-items: center;
 		list-style: none;
-		// background: var(--background);
-		// background-size: contain;
+		/* background: var(--background);
+		background-size: contain; */
 	}
 
 	/* nav a {
