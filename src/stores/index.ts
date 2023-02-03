@@ -5,6 +5,7 @@ import { tags } from "./tags";
 import { inputs } from "./inputs";
 
 export * from "./tags";
+export * from "./songs";
 export * from "./inputs";
 
 const FUSE_OPTIONS = { keys: ["name"] };
