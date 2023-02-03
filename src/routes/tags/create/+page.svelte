@@ -6,7 +6,7 @@
             return;
         }
 
-        await tags.add($inputs.create)
+        await tags.add({ name: $inputs.create })
 
         $inputs.create = "";
     }

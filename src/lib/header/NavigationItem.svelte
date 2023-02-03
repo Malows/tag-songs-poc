@@ -1,7 +1,7 @@
-<script>
+<script lang="ts">
     import { page } from "$app/stores";
 
-    export let route;
+    export let route: string;
 
     $: active = $page.url.pathname === route;
 
@@ -15,7 +15,6 @@
     >
     <a
         class="h-full flex items-center px-4 text-bold uppercase no-underline hover:no-underline duration-200 ease-lineare tracking-widest text-sm"
-        sveltekit:prefetch
         href={route}
         >
         <slot />
