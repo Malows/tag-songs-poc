@@ -17,6 +17,8 @@ declare global {
 		is_active: ?boolean;
 	}
 
+	type TagCreate = Pick<Tag, ['name']>
+
 	interface Song {
 		id: number;
 		name: string;
@@ -25,6 +27,8 @@ declare global {
 		tags: Tag[];
 		is_active: ?boolean;
 	}
+
+	type SongCreate = Pick<Song, ['name', 'spotify_url', 'youtube_url', 'tags']>
 
 	interface User {
 		id: number;
