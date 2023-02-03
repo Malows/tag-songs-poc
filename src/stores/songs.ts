@@ -3,23 +3,23 @@ import { writable } from "svelte/store";
 import services from "../services";
 
 function createStore() {
-    const { subscribe, set, update } = writable([] as Tag[]);
+    const { subscribe, set, update } = writable([] as Song[]);
 
-    const service = services.user.tags; // should pick some service from the profile
+    const service = services.user.songs; // should pick some service from the profile
 
     return {
         subscribe,
         set,
         update,
-        add: async (name: string) => {
-            const response = await service.create({ name });
+        add: async (payload: SongCreate) => {
+            const response = await service.create(payload);
 
             if (!response.isOk || response.code! >= 400) {
                 console.error(response);
                 throw new Error("Bad response from server");
             }
 
-            update((tags: Tag[]) => [...tags, response.data as Tag]);
+            update((songs: Song[]) => [...songs, response.data as Song]);
         },
 
         fetch: async () => {
@@ -30,7 +30,7 @@ function createStore() {
                 throw new Error("Bad response from server");
             }
 
-            set(response.data as Tag[]);
+            set(response.data as Song[]);
         }
     };
 }
