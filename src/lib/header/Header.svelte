@@ -5,11 +5,18 @@
 	import logo from "./svelte-logo.svg";
 	import Avatar from "./Avatar.svelte";
 	import NavigationItem from "./NavigationItem.svelte";
+	import UserDropdown from "./dropdown/UserDropdown.svelte";
+
+	let showMenu = false;
 
 	function checkHome () {
 	    if ($page.url.pathname != "/") {
 	        goto("/");
 	    }
+	}
+
+	function toggleMenu () {
+		showMenu = !showMenu
 	}
 </script>
 
@@ -24,7 +31,8 @@
 			<NavigationItem route="/tags">Etiquetas</NavigationItem>
 		</ul>
 
-		<Avatar src="/profile-pic.png" rounded alt="profile picture" />
+		<Avatar src="/profile-pic.png" rounded alt="profile picture" on:click={toggleMenu} />
+		<UserDropdown bind:show={showMenu} on:close={() => showMenu = false} />
 	</nav>
 
 </header>
