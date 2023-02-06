@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { tags, inputs } from "../../../stores";
+    import { tags, inputs } from "../../../../stores";
 
     async function handleSubmit () {
         if (!$inputs.create) {
