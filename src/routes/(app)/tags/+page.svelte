@@ -2,7 +2,7 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 
-	import { tags, possibleTags, inputs } from "../../stores";
+	import { tags, possibleTags, inputs } from "../../../stores";
 
 	import CreateTagBadge from "$lib/components/badges/CreateTagBadge.svelte";
 	import TagBadge from "$lib/components/badges/TagBadge.svelte";

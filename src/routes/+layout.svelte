@@ -1,33 +1,14 @@
 <script>
-	import Header from "$lib/header/Header.svelte";
 	import './styles.css';
-	import '../app.css';
 </script>
 
-<Header />
-
-<main>
-	<slot />
-</main>
+<slot />
 
 <footer>
 	<p>Made with love</p>
 </footer>
 
 <style>
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		align-items: center;
-		padding: 1rem;
-		width: 100%;
-		max-width: 1024px;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-
 	footer {
 		display: flex;
 		flex-direction: column;

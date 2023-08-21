@@ -3,10 +3,10 @@
 // and what to do when importing types
 declare global {
 	namespace App {
-		// interface Error {}
-		// interface Locals {}
-		// interface PageData {}
-		// interface Platform {}
+		interface Error {}
+		interface Locals {}
+		interface PageData {}
+		interface Platform {}
 
 	}
 
@@ -15,6 +15,7 @@ declare global {
 		name: string;
 		slug: ?string;
 		is_active: ?boolean;
+		songs: ?Song[];
 	}
 
 	type TagCreate = Pick<Tag, ['name']>

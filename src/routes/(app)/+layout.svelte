@@ -1,6 +1,6 @@
 <script>
 	import Header from "$lib/header/Header.svelte";
-	import '../app.css';
+	import '../../app.css';
 </script>
 
 <Header />
@@ -8,10 +8,6 @@
 <main>
 	<slot />
 </main>
-
-<footer>
-	<p>Made with love</p>
-</footer>
 
 <style>
 	main {
@@ -25,19 +21,5 @@
 		max-width: 1024px;
 		margin: 0 auto;
 		box-sizing: border-box;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 40px;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 40px 0;
-		}
 	}
 </style>
