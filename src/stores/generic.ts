@@ -1,7 +1,11 @@
 import type GenericService from "src/services/Generic";
 import { writable } from "svelte/store";
 
-export function createGenericStore<T, C>(service: GenericService<T>) {
+interface Identificable {
+    id: string | number;
+}
+
+export function createGenericStore<T extends Identificable, C>(service: GenericService<T>) {
     const { subscribe, set, update } = writable([] as T[]);
 
     return {
@@ -28,6 +32,26 @@ export function createGenericStore<T, C>(service: GenericService<T>) {
             }
 
             set(response.data as T[]);
+        },
+
+        get: async (payload: any) => {
+            const response = await service.get(payload)
+
+            if (!response.isOk || response.code! >= 400) {
+                console.error(response);
+                throw new Error("Bad response from server");
+            }
+            const data = response.data as T
+
+            update((elements: T[]) => {
+                const index = elements.findIndex(x => x.id === data.id)
+
+                if (index === -1) {
+                    return [...elements, data]
+                }
+
+                return [...elements.slice(0, index), data, ...elements.slice(index + 1)]
+            })
         }
     };
 }
