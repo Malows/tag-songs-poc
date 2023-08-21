@@ -10,7 +10,7 @@
 	let showMenu = false;
 
 	function checkHome () {
-	    if ($page.url.pathname != "/") {
+	    if ($page.url.pathname !== "/") {
 	        goto("/");
 	    }
 	}
@@ -56,6 +56,7 @@
 		/* background: var(--background);
 		background-size: contain; */
 	}
+
 
 	/* nav a {
 		display: flex;
